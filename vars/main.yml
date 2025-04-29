@@ -1,0 +1,55 @@
+# @format
+---
+# vars file for mysql
+# @format
+
+#mysql create first localuser
+mysql_username_local: test1234
+mysql_password_local: test1234
+mysql_user_host_local: localhost
+
+#mysql create first binduser
+mysql_username: bind1234
+mysql_password: bind1234#
+mysql_user_host: 10.0.2.38 <-- ip jika ingin ada binding
+
+phpmyadmin_allowed_subnets:
+  - "10.2.2.101"
+  - "127.0.0.1"
+
+laravel_allowed_subnets:
+  - "10.2.2.101"
+  - "127.0.0.1"
+
+# Versi PHP-FPM yang digunakan di semua server
+php_fpm_version: "8.3"
+
+# nginx setting jinja
+private_ip_mysql: "10.0.2.157" # private ip mysql untuk phpmyadmin
+
+#bind addreess
+host_ip_bind_address: 10.0.2.38
+
+# ---- Ansible Common ----
+ansible_python_interpreter: /usr/bin/python3
+# ansible_ssh_private_key_file: "/path/to/main-key.pem" # set ini di host_vars jika tiap host beda
+
+# ---- Extra (allowed SSH key, timezone, dsb) ----
+timezone: "Asia/Jakarta"
+
+# ---- Security/allowed_ips ----
+allowed_ips:
+  - "10.0.1.0/24"
+  - "127.0.0.1"
+
+# ---- aws back up s3 ----
+aws_access_key_id: "ACCESS_KEY_ID"
+aws_secret_access_key: "SECRET_KEY_ID"
+aws_region: "REGION"
+db_name:
+  - testdb1
+  - testdb2
+db_user: "root"
+s3_bucket: "s3://test.auto"
+# Untuk production, sensitive variable sebaiknya dienkripsi dengan 'ansible-vault'!
+
